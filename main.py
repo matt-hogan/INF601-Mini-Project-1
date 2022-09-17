@@ -19,3 +19,11 @@ data = yf.download(
 def get_closing_prices(ticker):
     """ Returns a list of the Adj Close prices for the provided ticker """
     return [ price for price in data["Adj Close"][ticker] ]
+
+for ticker in ticker_names:
+    ticker_prices = np.array(get_closing_prices(ticker))
+    plt.plot(ticker_prices)
+    plt.title(f"{ticker} Closing Stock Price For the Last 10 Days")
+    plt.xlabel("Day")
+    plt.ylabel("Price ($)")
+    plt.close()
